@@ -28,7 +28,7 @@ console.log(state)
   return (
     <div className="App">
       <h1>To Do</h1>
-      <TodoForm addTask={addTask} />
+      <TodoForm addTask={addTask} dispatch={dispatch} />
       <div className="tasks">
         <ToDoList tasks ={state.todoList} dispatch={dispatch}  />
         </div>      

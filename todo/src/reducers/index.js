@@ -47,8 +47,11 @@ export function toDoReducer  (state, action) {
             todoList:[...state.todoList, newTask]
             };
      
-      case 'CLEAR_COMPLETED_TASK':
-            return state;
+      case 'CLEAR_COMPLETED':
+            return {
+              ...state,
+              todoList: state.todoList.filter( item => item.completed === false )
+              }
       default:
         return state;
        
