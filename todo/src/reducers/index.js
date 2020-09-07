@@ -1,10 +1,21 @@
-export const initialState =[
-  {
-    name: 'Abdi',
-    completed: false,
-    id: 12443
-  }
+export const initialState ={
+  todoList:[
+
+    {
+      name: 'Abdi',
+      completed: false,
+      id: 12345
+    },
+    {
+      name: 'Do dishes',
+      completed: false,
+      id: 67890
+    },
+
   ]
+ 
+}
+
 
 
 export function toDoReducer  (state, action) {
@@ -16,14 +27,31 @@ export function toDoReducer  (state, action) {
       };
     
     switch(action.type) {
-        case 'ADD_TASK' :
-            return [...state, newTask];
-        case 'TOGGLE_TASK' :
-            return {...state, completed:!state.true};
-        case 'CLEAR_COMPLETED_TASK':
+      case 'TOGGLE_COMPLETED':
+        return {
+            ...state,
+            todoList: state.todoList.map(item => {
+                if (item.id == action.payload.id) {
+                    return {
+                        ...item,
+                        completed: !item.completed
+                    }
+                } else {
+                    return item
+                }
+            })
+        }
+      case 'ADD_TASK' :
+          return {
+            ...state,
+            todoList:[...state.todoList, newTask]
+            };
+     
+      case 'CLEAR_COMPLETED_TASK':
             return state;
-        default:
-            return state;
+      default:
+        return state;
+       
     
     }
 }

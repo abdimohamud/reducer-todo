@@ -30,7 +30,7 @@ console.log(state)
       <h1>To Do</h1>
       <TodoForm addTask={addTask} />
       <div className="tasks">
-        <ToDoList tasks ={state}  />
+        <ToDoList tasks ={state.todoList} dispatch={dispatch}  />
         </div>      
     </div>
   );
